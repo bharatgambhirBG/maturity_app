@@ -1,0 +1,199 @@
+{
+  "domains": [
+    {
+      "id": "architecture",
+      "name": "Core Architecture & System Design",
+      "description": "Architecture paradigm, domain boundaries, extensibility, failure isolation, async design.",
+      "subdomains": [
+        {
+          "id": "architecture_core",
+          "name": "Architecture Core",
+          "questions": [
+            { "id": "arch_q1", "text": "What architectural paradigm is used (monolith, modular monolith, microservices, event-driven)?", "help": "Paradigm choice impacts scalability and modernization cost.", "default_maturity": 5, "default_criticality": 5, "kpi": ["ASS", "SCS", "SPS"] },
+            { "id": "arch_q2", "text": "Are domain boundaries aligned with business capabilities (DDD)?", "help": "Good domain boundaries reduce coupling.", "default_maturity": 5, "default_criticality": 4, "kpi": ["ASS", "SCS", "SPS"] },
+            { "id": "arch_q3", "text": "Are there synchronous chains that create cascading failures?", "help": "Synchronous chains increase blast radius.", "default_maturity": 4, "default_criticality": 5, "kpi": ["ASS", "SCS", "SPS"] },
+            { "id": "arch_q4", "text": "Are there frozen zones avoided due to fragility?", "help": "Frozen zones indicate architectural debt.", "default_maturity": 3, "default_criticality": 4, "kpi": ["ASS", "SCS", "SPS"] },
+            { "id": "arch_q5", "text": "How many architectural decisions are irreversible without rewrite?", "help": "Irreversible decisions increase long-term risk.", "default_maturity": 3, "default_criticality": 5, "kpi": ["ASS", "SCS", "SPS"] },
+            { "id": "arch_q6", "text": "Can the architecture support 10x scale without redesign?", "help": "Scalability readiness impacts growth potential.", "default_maturity": 5, "default_criticality": 5, "kpi": ["ASS", "SCS", "SPS"] },
+            { "id": "arch_q7", "text": "Is the architecture cloud-native or cloud-compatible?", "help": "Cloud alignment affects elasticity.", "default_maturity": 4, "default_criticality": 4, "kpi": ["ASS", "SCS", "SPS"] },
+            { "id": "arch_q8", "text": "Are cross-cutting concerns centralized?", "help": "Centralization reduces duplication.", "default_maturity": 4, "default_criticality": 4, "kpi": ["ASS", "SCS", "SPS"] },
+            { "id": "arch_q9", "text": "Are there circular dependencies?", "help": "Circular dependencies reduce maintainability.", "default_maturity": 3, "default_criticality": 4, "kpi": ["ASS", "SCS", "SPS"] },
+            { "id": "arch_q10", "text": "Is the architecture extensible for B2C use cases?", "help": "Extensibility determines future expansion.", "default_maturity": 4, "default_criticality": 5, "kpi": ["ASS", "SCS", "SPS"] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "multitenancy",
+      "name": "Multi-Tenancy & B2B2C Readiness",
+      "description": "Tenant isolation, lifecycle, customization and B2B2C scalability.",
+      "subdomains": [
+        {
+          "id": "tenant_model",
+          "name": "Tenant Model",
+          "questions": [
+            { "id": "mt_q1", "text": "What tenancy model is used?", "help": "Tenancy model affects isolation and cost.", "default_maturity": 5, "default_criticality": 5, "kpi": ["SCS", "ORS", "AIRS"] },
+            { "id": "mt_q2", "text": "Can one tenant spike degrade others?", "help": "Indicates noisy neighbor risk.", "default_maturity": 4, "default_criticality": 5, "kpi": ["SCS", "ORS", "AIRS"] },
+            { "id": "mt_q3", "text": "Are tenant quotas enforced?", "help": "Prevents resource abuse.", "default_maturity": 4, "default_criticality": 5, "kpi": ["SCS", "ORS", "AIRS"] },
+            { "id": "mt_q4", "text": "Is onboarding automated?", "help": "Automation reduces operational cost.", "default_maturity": 4, "default_criticality": 4, "kpi": ["SCS", "ORS", "AIRS"] },
+            { "id": "mt_q5", "text": "Are cross-tenant data leakage risks present?", "help": "Data isolation is critical for enterprise trust.", "default_maturity": 3, "default_criticality": 5, "kpi": ["SCS", "ORS", "AIRS"] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "technical_debt",
+      "name": "Technical Debt",
+      "description": "Architectural, code, dependency and infrastructure debt.",
+      "subdomains": [
+        {
+          "id": "debt_analysis",
+          "name": "Debt Analysis",
+          "questions": [
+            { "id": "td_q1", "text": "What % of codebase is legacy or untestable?", "help": "Legacy code slows innovation.", "default_maturity": 3, "default_criticality": 5, "kpi": ["TDI", "MCE", "ASS"] },
+            { "id": "td_q2", "text": "Are outdated frameworks blocking upgrades?", "help": "Framework lock-in increases modernization cost.", "default_maturity": 3, "default_criticality": 5, "kpi": ["TDI", "MCE", "ASS"] },
+            { "id": "td_q3", "text": "Are there God classes or services?", "help": "God components reduce modularity.", "default_maturity": 3, "default_criticality": 4, "kpi": ["TDI", "MCE", "ASS"] },
+            { "id": "td_q4", "text": "Are deprecated APIs still used?", "help": "Deprecated APIs increase security risk.", "default_maturity": 3, "default_criticality": 4, "kpi": ["TDI", "MCE", "ASS"] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "scalability",
+      "name": "Scalability & Performance",
+      "description": "Throughput, latency, bottlenecks and scaling limits.",
+      "subdomains": [
+        {
+          "id": "performance_metrics",
+          "name": "Performance Metrics",
+          "questions": [
+            { "id": "sc_q1", "text": "What is the throughput ceiling (TPS/QPS)?", "help": "Defines system upper bound.", "default_maturity": 4, "default_criticality": 5, "kpi": ["SCS", "ORS"] },
+            { "id": "sc_q2", "text": "What is P95/P99 latency?", "help": "Latency impacts user experience.", "default_maturity": 4, "default_criticality": 5, "kpi": ["SCS", "ORS"] },
+            { "id": "sc_q3", "text": "Are there known bottlenecks?", "help": "Bottlenecks cap growth.", "default_maturity": 3, "default_criticality": 5, "kpi": ["SCS", "ORS"] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "security",
+      "name": "Security & Compliance",
+      "description": "Application, infrastructure and data protection maturity.",
+      "subdomains": [
+        {
+          "id": "security_controls",
+          "name": "Security Controls",
+          "questions": [
+            { "id": "sec_q1", "text": "Are secrets rotated automatically?", "help": "Secret rotation reduces breach risk.", "default_maturity": 4, "default_criticality": 5, "kpi": ["SCRS", "ORS"] },
+            { "id": "sec_q2", "text": "Is PII encrypted at rest and in transit?", "help": "Encryption ensures compliance.", "default_maturity": 5, "default_criticality": 5, "kpi": ["SCRS", "ORS"] },
+            { "id": "sec_q3", "text": "Are vulnerabilities regularly scanned?", "help": "Scanning reduces exposure window.", "default_maturity": 4, "default_criticality": 5, "kpi": ["SCRS", "ORS"] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "data_architecture",
+      "name": "Data Architecture & Governance",
+      "description": "Data modeling, lifecycle and governance maturity.",
+      "subdomains": [
+        {
+          "id": "data_governance",
+          "name": "Data Governance",
+          "questions": [
+            { "id": "data_q1", "text": "Is schema evolution controlled?", "help": "Uncontrolled schema changes cause outages.", "default_maturity": 4, "default_criticality": 4, "kpi": ["DQGS", "ORS"] },
+            { "id": "data_q2", "text": "Are retention policies implemented?", "help": "Retention policies reduce legal risk.", "default_maturity": 4, "default_criticality": 5, "kpi": ["DQGS", "ORS"] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "api",
+      "name": "API & Integration",
+      "description": "API design, governance and ecosystem readiness.",
+      "subdomains": [
+        {
+          "id": "api_design",
+          "name": "API Design",
+          "questions": [
+            { "id": "api_q1", "text": "Are APIs versioned and backward compatible?", "help": "Versioning prevents breaking clients.", "default_maturity": 5, "default_criticality": 5, "kpi": ["AIRS", "SCS"] },
+            { "id": "api_q2", "text": "Is API documentation complete?", "help": "Good documentation reduces integration cost.", "default_maturity": 4, "default_criticality": 4, "kpi": ["AIRS", "SCS"] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "devops",
+      "name": "DevOps & Observability",
+      "description": "CI/CD, monitoring and operational maturity.",
+      "subdomains": [
+        {
+          "id": "devops_maturity",
+          "name": "DevOps Maturity",
+          "questions": [
+            { "id": "dev_q1", "text": "Are deployments zero-downtime?", "help": "Zero downtime improves reliability.", "default_maturity": 4, "default_criticality": 5, "kpi": ["ORS", "TCKRS"] },
+            { "id": "dev_q2", "text": "Are logs, metrics and traces centralized?", "help": "Observability shortens MTTR.", "default_maturity": 4, "default_criticality": 5, "kpi": ["ORS", "TCKRS"] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cloud",
+      "name": "Cloud & Infrastructure",
+      "description": "Infrastructure automation, resilience and cost efficiency.",
+      "subdomains": [
+        {
+          "id": "cloud_foundation",
+          "name": "Cloud Foundation",
+          "questions": [
+            { "id": "cloud_q1", "text": "Is infrastructure defined as code?", "help": "IaC improves reproducibility.", "default_maturity": 5, "default_criticality": 5, "kpi": ["ORS", "ASS"] },
+            { "id": "cloud_q2", "text": "Is disaster recovery tested?", "help": "DR readiness reduces catastrophic risk.", "default_maturity": 4, "default_criticality": 5, "kpi": ["ORS", "ASS"] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "team",
+      "name": "Team Capability & Knowledge Risk",
+      "description": "Engineering capability, knowledge distribution and delivery maturity.",
+      "subdomains": [
+        {
+          "id": "team_health",
+          "name": "Team Health",
+          "questions": [
+            { "id": "team_q1", "text": "Are there single points of failure in knowledge?", "help": "Knowledge silos create delivery risk.", "default_maturity": 3, "default_criticality": 5, "kpi": ["TCKRS"] },
+            { "id": "team_q2", "text": "Is delivery predictable?", "help": "Predictability increases stakeholder trust.", "default_maturity": 4, "default_criticality": 4, "kpi": ["TCKRS"] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "customer_experience",
+      "name": "Customer Experience & SLAs",
+      "description": "Support maturity, SLA adherence and incident history.",
+      "subdomains": [
+        {
+          "id": "customer_support",
+          "name": "Customer Support",
+          "questions": [
+            { "id": "cx_q1", "text": "Are SLAs met consistently?", "help": "SLA breaches reduce enterprise trust.", "default_maturity": 4, "default_criticality": 5, "kpi": ["ORS", "SPS"] },
+            { "id": "cx_q2", "text": "Are recurring incidents tracked and resolved?", "help": "Recurring issues indicate systemic problems.", "default_maturity": 3, "default_criticality": 5, "kpi": ["ORS", "SPS"] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "commercial",
+      "name": "Commercial & Licensing",
+      "description": "Licensing risks, vendor lock-in and modernization economics.",
+      "subdomains": [
+        {
+          "id": "commercial_risk",
+          "name": "Commercial Risk",
+          "questions": [
+            { "id": "com_q1", "text": "Are there licensing risks (GPL/AGPL)?", "help": "Licensing issues can block acquisition.", "default_maturity": 3, "default_criticality": 5, "kpi": ["MCE", "SPS"] },
+            { "id": "com_q2", "text": "Is pricing scalable with growth?", "help": "Non-scalable pricing reduces margins.", "default_maturity": 4, "default_criticality": 4, "kpi": ["MCE", "SPS"] }
+          ]
+        }
+      ]
+    }
+  ]
+}
